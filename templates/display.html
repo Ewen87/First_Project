@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            text-align: left;
+            margin: 0 auto;
+            width: 80%;
+        }
+        #download-markdown {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 16px;
+        }
+        #download-markdown:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+        .center-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Contexte et enjeux du projet</h1>
+        <div id="contexte-enjeux"></div>
+
+        <h1>Expression des besoins</h1>
+        <table border="1" id="expression-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Besoins</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h1>Cahier de Charges</h1>
+        <table border="1" id="cahier-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Fonctionnalité</th>
+                    <th>Exigences Techniques</th>
+                    <th>Contraintes Spécifiques</th>
+                    <th>Autres Spécifications</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h1>Backlog</h1>
+        <table border="1" id="backlog-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Tâche</th>
+                    <th>Description</th>
+                    <th>Priorité</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="center-button">
+            <button id="download-markdown" disabled>Télécharger le fichier Markdown</button>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let contexteEnjeux = '';
+            let expressionBesoins = [];
+            let cahierCharges = [];
+            let backlog = [];
+
+            function fetchData() {
+                return new Promise((resolve, reject) => {
+                    let requestsCompleted = 0;
+
+                    function checkCompletion() {
+                        if (requestsCompleted === 4) {
+                            $('#download-markdown').prop('disabled', false);
+                            resolve();
+                        }
+                    }
+
+                    $.ajax({
+                        url: '/contexte_projet',
+                        method: 'GET',
+                        success: function(data) {
+                            contexteEnjeux = data;
+                            $('#contexte-enjeux').html('<p>' + data + '</p>');
+                            requestsCompleted++;
+                            checkCompletion();
+                        },
+                        error: function() {
+                            reject();
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/expression_besoin',
+                        method: 'GET',
+                        success: function(data) {
+                            expressionBesoins = data;
+                            let rows = '';
+                            data.forEach(function(row) {
+                                rows += '<tr>';
+                                rows += '<td>' + row[0] + '</td>';
+                                rows += '<td>' + row[1] + '</td>';
+                                rows += '<td>' + row[2] + '</td>';
+                                rows += '</tr>';
+                            });
+                            $('#expression-table tbody').html(rows);
+                            requestsCompleted++;
+                            checkCompletion();
+                        },
+                        error: function() {
+                            reject();
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/cahier_charge',
+                        method: 'GET',
+                        success: function(data) {
+                            cahierCharges = data;
+                            let rows = '';
+                            data.forEach(function(row) {
+                                rows += '<tr>';
+                                rows += '<td>' + row[0] + '</td>';
+                                rows += '<td>' + row[1] + '</td>';
+                                rows += '<td>' + row[2] + '</td>';
+                                rows += '<td>' + row[3] + '</td>';
+                                rows += '<td>' + row[4] + '</td>';
+                                rows += '</tr>';
+                            });
+                            $('#cahier-table tbody').html(rows);
+                            requestsCompleted++;
+                            checkCompletion();
+                        },
+                        error: function() {
+                            reject();
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/backlog',
+                        method: 'GET',
+                        success: function(data) {
+                            backlog = data;
+                            let rows = '';
+                            data.forEach(function(row) {
+                                rows += '<tr>';
+                                rows += '<td>' + row[0] + '</td>';
+                                rows += '<td>' + row[1] + '</td>';
+                                rows += '<td>' + row[2] + '</td>';
+                                rows += '<td>' + row[3] + '</td>';
+                                rows += '<td>' + row[4] + '</td>';
+                                rows += '</tr>';
+                            });
+                            $('#backlog-table tbody').html(rows);
+                            requestsCompleted++;
+                            checkCompletion();
+                        },
+                        error: function() {
+                            reject();
+                        }
+                    });
+                });
+            }
+
+            fetchData().then(function() {
+                $('#download-markdown').click(function() {
+                    let markdownContent = `# Contexte et enjeux du projet\n\n${contexteEnjeux}\n\n`;
+
+                    markdownContent += `# Expression des besoins\n\n`;
+                    markdownContent += `| | Besoins | Description |\n`;
+                    markdownContent += `|---|---|---|\n`;
+                    expressionBesoins.forEach(function(row) {
+                        markdownContent += `| ${row[0]} | ${row[1]} | ${row[2]} |\n`;
+                    });
+
+                    markdownContent += `\n# Cahier de Charges\n\n`;
+                    markdownContent += `| | Fonctionnalité | Exigences Techniques | Contraintes Spécifiques | Autres Spécifications |\n`;
+                    markdownContent += `|---|---|---|---|---|\n`;
+                    cahierCharges.forEach(function(row) {
+                        markdownContent += `| ${row[0]} | ${row[1]} | ${row[2]} | ${row[3]} | ${row[4]} |\n`;
+                    });
+
+                    markdownContent += `\n# Backlog\n\n`;
+                    markdownContent += `| | Tâche | Description | Priorité | Statut |\n`;
+                    markdownContent += `|---|---|---|---|---|\n`;
+                    backlog.forEach(function(row) {
+                        markdownContent += `| ${row[0]} | ${row[1]} | ${row[2]} | ${row[3]} | ${row[4]} |\n`;
+                    });
+
+                    const blob = new Blob([markdownContent], { type: 'text/markdown' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'projet.md';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
+            }).catch(function() {
+                console.error('Error fetching data');
+            });
+        });
+    </script>
+</body>
+</html>

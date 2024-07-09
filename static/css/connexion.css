@@ -1,0 +1,33 @@
+.form-container{
+    max-width: 900px; 
+    margin: 0 auto; 
+    margin-top: 120px;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.text-center{
+    margin-bottom: 30px;
+}
+
+
+.create-account {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666; 
+}
+.create-account a {
+    color: #007bff; 
+    text-decoration: none; 
+}
+.create-account a:hover {
+    text-decoration: underline; 
+}
+
+.custom-button{
+    width: 150px;
+}

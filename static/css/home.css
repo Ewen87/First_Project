@@ -1,0 +1,100 @@
+.navbar-nav .nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+.navbar-nav .nav-link:hover {
+    color: #0056b3; 
+    background-color: #33d150; 
+  }
+
+.navbar-nav {
+    margin: 0 auto;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 30px; 
+}
+  .navbar-nav .nav-item:last-child {
+    margin-right: 0; 
+}
+
+
+
+.hero {
+    position: relative;
+    background-image: url('/static/Image/document-classification.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh; /* Adjusted height */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 1;
+}
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.h5{
+    justify-content: center;
+}
+
+
+
+#carouselExampleFade {
+    height: 80vh;
+}
+
+.carousel-item {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item img {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carousel-caption h5 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.carousel-caption p {
+    font-size: 1rem;
+}
+
+.commencer{
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    margin-top: 60px;
+    margin-bottom: 60px;
+}

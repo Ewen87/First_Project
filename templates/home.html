@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Page d'accueil</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#Accueil">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Comment_ça_marche">Comment ça marche ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bon_savoir">Bon à savoir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <a href="/connexion"> <button type="button" class="btn btn-outline-success">Se connecter</button></a>
+        </div>
+    </nav>
+
+    <section id="Accueil">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Bienvenue</h1>
+                    <p>Sur la page de génération de document par l'IA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Comment_ça_marche" class="how-it-works">
+        <div class="d-flex justify-content-center mt-5">
+            <p class="h5">Comment ça marche ?</p>
+        </div>
+    
+        <div class="container mt-5">
+            <div class="row text-center">
+                <div class="col-12 col-lg-4 mb-4">
+                    <img src="/static/Image/icons8-connexion-100.png" alt="Connexion">
+                    <div class="d-flex justify-content-center mt-3">
+                        <p class="h6">Je me connecte.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 mb-4">
+                    <img src="/static/Image/icons8-liste-100.png" alt="Exprimer mes besoins">
+                    <div class="d-flex justify-content-center mt-3">
+                        <p class="h6">J'exprime mes besoins.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 mb-4">
+                    <img src="/static/Image/icons8-approved-96.png" alt="Validation">
+                    <div class="d-flex justify-content-center mt-3">
+                        <p class="h6">Je valide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="Bon_savoir">
+        <div class="d-flex justify-content-center mt-5">
+            <p class="h5">Bon à savoir</p>
+        </div>
+
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/static/Image/lexpression-besoin.jpeg" class="d-block w-100" alt="Expression des besoins">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Expression des besoins</h5>
+                  <p>Clarifier les attentes pour éviter les malentendus.</p>
+                  <p>Définir précisément les besoins pour un projet réussi.</p>
+                  <p>Établir une vision commune dès le début.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/static/Image/cahier-des-charges.jpg" class="d-block w-100" alt="Cahier des charges">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Cahier des charges</h5>
+                  <p>Documenter les exigences pour un suivi rigoureux.</p>
+                  <p>Garantir la conformité aux attentes des parties prenantes.</p>
+                  <p>Servir de référence tout au long du projet.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="/static/Image/illustration-backlog-icon-vector.jpg" class="d-block w-100" alt="Backlog">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Backlog</h5>
+                  <p>Prioriser les tâches pour une gestion efficace.</p>
+                  <p>Assurer une planification agile et flexible.</p>
+                  <p>Visualiser l'avancement et les prochaines étapes.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </section>
+    <div class="commencer">
+        <a href="/inscription">
+            <button type="button" class="btn btn-outline-success">Commençer</button>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>  
+</html>

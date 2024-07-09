@@ -1,0 +1,114 @@
+**Expression des besoins**
+
+### Liste des besoins fonctionnels et non fonctionnels :
+
+* Besoin fonctionnel 1 : Gestion des stocks (ajout, modification, suppression) pour les différents produits
+* Besoin fonctionnel 2 : Consultation des quantités actuelles de stock pour chaque produit
+* Besoin fonctionnel 3 : Calcul de la quantité disponible en stock et du coût total du stock
+* Besoin fonctionnel 4 : Gestion des ordres de réapprovisionnement automatique
+* Besoin non fonctionnel 1 : Intégration avec un système d'information existant pour l'enregistrement des ventes
+* Besoin non fonctionnel 2 : Sécurité des données stockées (authentification, autorisation, encryption)
+* Besoin non fonctionnel 3 : Interface utilisateur intuitive et facile à utiliser
+
+### Objectifs principaux du projet :
+
+* Améliorer la visibilité et le contrôle sur les stocks
+* Réduire les coûts liés aux erreurs de stockage
+* Améliorer l'efficacité des processus de réapprovisionnement
+* Fournir une interface utilisateur intuitive et facile à utiliser
+
+### Contraintes et dépendances :
+
+* La nouvelle application doit être compatible avec les systèmes d'information existants
+* Le système actuel de gestion de stock sera abandonné pour la nouvelle application
+* Les utilisateurs doivent être formés à l'utilisation du nouveau système avant la mise en production
+
+**Cahier des charges**
+
+### Présentation du projet :
+
+Nom : Site web
+Description : Site web pour une application de gestion de stock
+
+### Contexte et problématique :
+
+La société souhaite améliorer sa capacité à gérer ses stocks et réduire les coûts liés aux erreurs de stockage. Actuellement, la gestion des stocks est effectuée manuellement, ce qui peut entraîner des erreurs et des pertes de temps.
+
+### Périmètre du projet :
+
+* Conception et développement d'un site web pour gérer les stocks
+* Intégration avec un système d'information existant pour l'enregistrement des ventes
+* Sécurité des données stockées (authentification, autorisation, encryption)
+* Interface utilisateur intuitive et facile à utiliser
+
+### Spécifications fonctionnelles détaillées :
+
+* Gestion des stocks : ajout, modification, suppression de produits
+* Consultation des quantités actuelles de stock pour chaque produit
+* Calcul de la quantité disponible en stock et du coût total du stock
+* Gestion des ordres de réapprovisionnement automatique
+
+### Spécifications techniques :
+
+* Langage de programmation : JavaScript (avec framework React)
+* Base de données : MySQL
+* Serveur web : Apache
+* Système d'exploitation : Linux
+
+### Critères de réussite et indicateurs de performance :
+
+* Temps de réapprovisionnement amélioré de 20%
+* Réduction des erreurs de stockage de 30%
+* Amélioration de la visibilité des stocks pour les utilisateurs de 25%
+
+### Risques et plans de mitigation :
+
+* Le changement pourrait entraîner une perte de productivité pendant la période d'adaptation au nouveau système
+* Plan de mitigation : formation des utilisateurs avant la mise en production, suivi des indicateurs de performance pour ajuster les stratégies si nécessaire
+
+**Backlog**
+
+### Liste des User Stories avec priorités :
+
+1. Gestion des stocks (ajout, modification, suppression) - Priorité : 3
+2. Consultation des quantités actuelles de stock pour chaque produit - Priorité : 2
+3. Calcul de la quantité disponible en stock et du coût total du stock - Priorité : 1
+4. Gestion des ordres de réapprovisionnement automatique - Priorité : 2
+5. Intégration avec un système d'information existant pour l'enregistrement des ventes - Priorité : 3
+
+### Tâches associées à chaque User Story :
+
+* Tâche 1.1 : Définition du modèle de données pour les stocks
+* Tâche 2.1 : Conception de la page de consultation des quantités actuelles de stock
+* Tâche 3.1 : Développement du calcul de la quantité disponible en stock et du coût total du stock
+
+### Définition des critères de complétion (definition of done) pour chaque tâche :
+
+* Critère de complétion : La tâche est considérée comme terminée lorsque la fonctionnalité associée à l'User Story est mise en production et que les tests ont été exécutés avec succès.
+
+### Estimations en termes de points de complexité ou de temps :
+
+* Tâche 1.1 : 5 jours
+* Tâche 2.1 : 3 jours
+* Tâche 3.1 : 4 jours
+
+**Tableau récapitulatif**
+
+| Élément | Expression des besoins | Cahier des charges | Backlog |
+| --- | --- | --- | --- |
+| Nom du projet | Site web | Site web | - |
+| Description du projet | Gestion de stock | Gestion de stock | - |
+| Liste des besoins fonctionnels et non fonctionnels | 6 | 4 | - |
+| Objectifs principaux du projet | 3 | 3 | - |
+| Contraintes et dépendances | 2 | 1 | - |
+| Périmètre du projet | - | Oui | - |
+| Spécifications fonctionnelles détaillées | - | 4 | - |
+| Spécifications techniques | - | 5 | - |
+| Critères de réussite et indicateurs de performance | - | 2 | - |
+| Risques et plans de mitigation | - | 1 | - |
+| Liste des User Stories avec priorités | - | - | 5 |
+| Tâches associées à chaque User Story | - | - | 3 |
+| Définition des critères de complétion (definition of done) pour chaque tâche | - | - | 1 |
+| Estimations en termes de points de complexité ou de temps | - | - | 3 |
+
+Note : Le tableau récapitulatif est un aperçu rapide et visuel des éléments clés de l'expression des besoins, du cahier des charges et du backlog.
