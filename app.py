@@ -18,8 +18,8 @@ from psycopg2.extras import RealDictCursor
 app = Flask(__name__)
 
 app.config.from_object(config)
-# openai.api_key= os.getenv('OPENAI_API_KEY')
-openai.api_key="sk-proj-pyvKcTjCSHZe71Fx9wmOT3BlbkFJxoJ0gLjbrILvpolbAwMR"
+openai.api_key= os.getenv('OPENAI_API_KEY')
+#openai.api_key="sk-proj-pyvKcTjCSHZe71Fx9wmOT3BlbkFJxoJ0gLjbrILvpolbAwMR"
 
 llm = Ollama(
     model="llama3"
