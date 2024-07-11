@@ -18,7 +18,8 @@ from psycopg2.extras import RealDictCursor
 app = Flask(__name__)
 
 app.config.from_object(config)
-openai.api_key= os.getenv('OPENAI_API_KEY')
+# openai.api_key= os.getenv('OPENAI_API_KEY')
+openai.api_key="sk-proj-pyvKcTjCSHZe71Fx9wmOT3BlbkFJxoJ0gLjbrILvpolbAwMR"
 
 llm = Ollama(
     model="llama3"
@@ -187,7 +188,7 @@ def generer_documentation_chatgpt():
 
     # Prépare le prompt 
     prompt = f"""
-    Vous allez créer la documentation complète pour un projet. Cette documentation inclut l'expression des besoins, le cahier des charges, et le backlog. Vous recevrez deux éléments pour chaque projet : le nom du projet et une description détaillée du projet.
+    Vous allez créer la documentation complète pour un projet. Cette documentation inclut l'expression des besoins, le cahier des charges, le backlog, la note de cadrage, le cahier de test, la proposition d'architecture, et la planification. Vous recevrez deux éléments pour chaque projet : le nom du projet et une description détaillée du projet.
 
     Inputs :
     - Nom du projet : {nom_projet}
@@ -195,28 +196,54 @@ def generer_documentation_chatgpt():
 
     Outputs attendus :
     1. Expression des besoins :
-       - Liste des besoins fonctionnels et non fonctionnels
-       - Objectifs principaux du projet
-       - Contraintes et dépendances
+    - Liste des besoins fonctionnels et non fonctionnels
+    - Objectifs principaux du projet
+    - Contraintes et dépendances
 
     2. Cahier des charges :
-       - Présentation du projet (incluant le nom et la description)
-       - Contexte et problématique
-       - Périmètre du projet
-       - Spécifications fonctionnelles détaillées
-       - Spécifications techniques
-       - Critères de réussite et indicateurs de performance
-       - Risques et plans de mitigation
+    - Présentation du projet (incluant le nom et la description)
+    - Contexte et problématique
+    - Périmètre du projet
+    - Spécifications fonctionnelles détaillées
+    - Spécifications techniques
+    - Critères de réussite et indicateurs de performance
+    - Risques et plans de mitigation
 
     3. Backlog :
-       - Liste des User Stories avec priorités
-       - Tâches associées à chaque User Story
-       - Définition des critères de complétion (definition of done) pour chaque tâche
-       - Estimations en termes de points de complexité ou de temps
+    - Liste des User Stories avec priorités
+    - Tâches associées à chaque User Story
+    - Définition des critères de complétion (definition of done) pour chaque tâche
+    - Estimations en termes de points de complexité ou de temps
 
-    4. Tableau récapitulatif :
-        - Vue d'ensemble des éléments de l'expression des besoins, du cahier des charges, et du backlog sous forme de tableau
+    4. Note de cadrage :
+    - Objectifs du projet
+    - Périmètre et exclusions
+    - Parties prenantes et gouvernance
+    - Budget et ressources nécessaires
+    - Planning général
+
+    5. Cahier de test :
+    - Stratégie de test
+    - Cas de test détaillés
+    - Critères d'acceptation pour chaque cas de test
+    - Plan de test et calendrier
+
+    6. Proposition d'architecture :
+    - Architecture logique
+    - Architecture technique
+    - Composants et interfaces
+    - Diagrammes UML (cas d'utilisation, séquence, classes)
+
+    7. Planification :
+    - Découpage du projet en phases et jalons
+    - Chronogramme avec les échéances principales
+    - Plan de gestion des ressources
+    - Plan de communication
+
+    8. Tableau récapitulatif :
+        - Vue d'ensemble des éléments de l'expression des besoins, du cahier des charges, du backlog, de la note de cadrage, du cahier de test, de la proposition d'architecture et de la planification sous forme de tableau
     """
+
 
     response = openai.Completion.create(
         engine="gpt-3.5-turbo-instruct",
@@ -240,36 +267,62 @@ def generer_documentation_ollama():
     
     # Prépare le prompt 
     prompt = f"""
-Vous allez créer la documentation complète pour un projet. Cette documentation inclut l'expression des besoins, le cahier des charges, et le backlog. Vous recevrez deux éléments pour chaque projet : le nom du projet et une description détaillée du projet.
+    Vous allez créer la documentation complète pour un projet. Cette documentation inclut l'expression des besoins, le cahier des charges, le backlog, la note de cadrage, le cahier de test, la proposition d'architecture, et la planification. Vous recevrez deux éléments pour chaque projet : le nom du projet et une description détaillée du projet.
 
-Inputs :
-- Nom du projet : {nom_projet}
-- Description du projet : {description_projet}
+    Inputs :
+    - Nom du projet : {nom_projet}
+    - Description du projet : {description_projet}
 
-Outputs attendus :
-1. Expression des besoins :
-   - Liste des besoins fonctionnels et non fonctionnels
-   - Objectifs principaux du projet
-   - Contraintes et dépendances
+    Outputs attendus :
+    1. Expression des besoins :
+    - Liste des besoins fonctionnels et non fonctionnels
+    - Objectifs principaux du projet
+    - Contraintes et dépendances
 
-2. Cahier des charges :
-   - Présentation du projet (incluant le nom et la description)
-   - Contexte et problématique
-   - Périmètre du projet
-   - Spécifications fonctionnelles détaillées
-   - Spécifications techniques
-   - Critères de réussite et indicateurs de performance
-   - Risques et plans de mitigation
+    2. Cahier des charges :
+    - Présentation du projet (incluant le nom et la description)
+    - Contexte et problématique
+    - Périmètre du projet
+    - Spécifications fonctionnelles détaillées
+    - Spécifications techniques
+    - Critères de réussite et indicateurs de performance
+    - Risques et plans de mitigation
 
-3. Backlog :
-   - Liste des User Stories avec priorités
-   - Tâches associées à chaque User Story
-   - Définition des critères de complétion (definition of done) pour chaque tâche
-   - Estimations en termes de points de complexité ou de temps
+    3. Backlog :
+    - Liste des User Stories avec priorités
+    - Tâches associées à chaque User Story
+    - Définition des critères de complétion (definition of done) pour chaque tâche
+    - Estimations en termes de points de complexité ou de temps
 
-4. Tableau récapitulatif :
-   - Vue d'ensemble des éléments de l'expression des besoins, du cahier des charges, et du backlog sous forme de tableau
-"""
+    4. Note de cadrage :
+    - Objectifs du projet
+    - Périmètre et exclusions
+    - Parties prenantes et gouvernance
+    - Budget et ressources nécessaires
+    - Planning général
+
+    5. Cahier de test :
+    - Stratégie de test
+    - Cas de test détaillés
+    - Critères d'acceptation pour chaque cas de test
+    - Plan de test et calendrier
+
+    6. Proposition d'architecture :
+    - Architecture logique
+    - Architecture technique
+    - Composants et interfaces
+    - Diagrammes UML (cas d'utilisation, séquence, classes)
+
+    7. Planification :
+    - Découpage du projet en phases et jalons
+    - Chronogramme avec les échéances principales
+    - Plan de gestion des ressources
+    - Plan de communication
+
+    8. Tableau récapitulatif :
+        - Vue d'ensemble des éléments de l'expression des besoins, du cahier des charges, du backlog, de la note de cadrage, du cahier de test, de la proposition d'architecture et de la planification sous forme de tableau
+    """
+
 
     documentation = llm.invoke(prompt)
 
